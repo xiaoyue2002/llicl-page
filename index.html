@@ -68,7 +68,7 @@
               <!-- PDF Link. -->
               <span class="link-block">
                 <a 
-                  href="https://arxiv.org/pdf/2011.12948"
+                  href="TODO"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -77,7 +77,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="TODO"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -141,14 +141,14 @@
           </p>
           <p>
             We benchmark 12 long-context LMs using Task Haystack. We find that <b>state-of-the-art closed models such as GPT-4o still struggle in this setting, failing 15% of
-            the cases on average, while all open models we evaluate further lack behind by a
-            large margin</b>. In our controlled analysis, we find that long-context LMs are subject
-            to <b>distractibility and recency bias</b>, and these two factors both contribute to the
-            failure cases. Further, we observe <b>declines in performance when task instructions
-            are paraphrased at test time or when ICL demonstrations are repeated excessively</b>,
-            raising concerns about the robustness, instruction understanding, and true context
-            utilization of current long-context LMs. We release our code and data to encourage
-            future research that investigates and addresses these limitations
+            the cases on average, while all open-weight models we evaluate further lack behind by a
+            large margin</b>. In our controlled analysis, we identify factors such as <b>distraction</b>
+            and <b>recency bias</b> as contributors to these failure cases. Further, we observe <b>declines
+            in performance when task instructions are paraphrased at test time or when ICL
+            demonstrations are repeated excessively</b>, raising concerns about the robustness,
+            instruction understanding, and true context utilization of current long-context LMs.
+            We release our code and data to encourage future research that investigates and
+            addresses these limitations.
           </p>
         </div>
       </div>
@@ -184,19 +184,62 @@
 
 
         <!-- Main Results -->
-        <h2 class="title is-4" style="margin-top: 30px;">Main Results</h3>
+        <h2 class="title is-4" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center;">Main Results</h3>
           <div class="content has-text-justified">
             <p>
               We evaluate 10 open-source models and 2 commercial models. State-of-the-art closed models (GPT-4o) still struggle in this setting, and all open models we evaluate further lack behind by a large margin.
             </p>
           </div>
+
           <div class="content has-text-centered">
-            <img src="./static/images/niath_film-7b.pdf" alt="First Image Description" style="width: 100%; max-width: 500px; height: auto;">
-            <figcaption style="font-size: 14px;">Visualized Task Haystack Results on FILM-7B (32k)</figcaption>
+            <style>
+              #models { display: flex; width: 96%; background: #ffffff; overflow-y: auto; height: auto;}
+              #models a { text-align: center; width: 8%; display: block; padding: 2px; background: #f5f5f5; margin: 2px; cursor: pointer; text-decoration: none; border-radius: 10px; color: black; font-size: 12px;}
+              #models a:hover { background: #ddd; }
+              #imageDisplay { justify-content: center; align-items: center; width: 90%; height: auto; max-height: 200px; margin-bottom: 5%;}
+            </style>
+
+            <div id="models">
+                <a onclick="showImage('static/images/niath_mistral-7b.pdf', 'Mistral-7B-32K')">Mistral-7B
+                  (32K)</a>
+                <a onclick="showImage('static/images/niath_film-7b.pdf', 'FILM-7B-32K')">FILM-7B
+                  (32K)</a>
+                <a onclick="showImage('static/images/niath_llama2-7b-32k.pdf', 'Llama2-7B-32K')">Llama2-7B
+                  (32K)</a>
+                <a onclick="showImage('static/images/niath_llama2-7b-80k.pdf', 'Llama2-7B-80K')">Llama2-7B
+                  (80K)</a>
+                <a onclick="showImage('static/images/niath_llama3-8b-1048k.pdf', 'Llama3-8B-1048K')">Llama3-8B
+                  (1048K)</a>
+                <a onclick="showImage('static/images/niath_llama3-70b-1048k.pdf', 'Llama3-70B-1048K')">Llama3-70B (1048K)
+                <a onclick="showImage('static/images/niath_yi-6b-200k.pdf', 'Yi-6B-200K')" style="display: block;">&nbsp;Yi-6B&nbsp; (200k)
+                <a onclick="showImage('static/images/niath_yi-9b-200k.pdf', 'Yi-9B-200K')">&nbsp;Yi-9B&nbsp;
+                  (200K)</a>
+                <a onclick="showImage('static/images/niath_yi-34b-200k.pdf', 'Yi-34B-200K')">Yi-34B
+                  (200K)</a>
+                <a onclick="showImage('static/images/niath_command-r.pdf', 'Cmd-R-35B-128K')">Cmd-R-35B
+                  (128K)</a>
+                <a onclick="showImage('static/images/niath_gpt-3.5-turbo.pdf', 'GPT-3.5-Turbo')">GPT-3.5-Turbo
+                  (16K)</a>
+                <a onclick="showImage('static/images/niath_gpt-4o.pdf', 'GPT-4o')">GPT-4o
+                  (128K)</a>
+            </div>
+            <br>
+            <div id="imageDisplay">
+              <img id="modelImage" style="max-height: 240px;" src='static/images/niath_mistral-7b.pdf'/>
+              <figcaption id="modelcaption" style="font-size: 16px;">Visualized Task Haystack Results of Mistral-7B-32K.</figcaption>
+            </div>
+            <script>
+              function showImage(imageFile, model) {
+                document.getElementById('modelImage').src = imageFile;
+                document.getElementById('modelcaption').textContent = "Visualized Task Haystack Results of " + model + ".";
+              }
+            </script>
           </div>
-          <div class="content has-text-centered">
+          <br>
+          <div class="has-text-centered" style="margin-top: 20px;">
             <img src="./static/images/tradeoff.pdf" alt="Second Image Description" style="width: 100%; max-width: 500px; height: auto;">
           </div>
+          <br>
           <!-- Main Results Table -->
           <div class="content has-text-centered">
             <div class="table-container">
@@ -543,12 +586,7 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+    <pre><code>TODO</code></pre>
   </div>
 </section>
 
