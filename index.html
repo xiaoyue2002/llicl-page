@@ -134,23 +134,24 @@
             significantly worse than the Single-task ICL baseline.
           </p>
           <p>
-            Task Haystack draws inspiration from the widely-adopted “needle-in-a-haystack”
-            (NIAH) evaluation, but presents new and unique challenges. It demands that
-            models (1) utilize the contexts with deeper understanding, rather than resorting to
-            simple copying and pasting; (2) navigate through long streams of evolving topics
-            and tasks, which closely approximates the complexities of real-world usage of
-            long-context LMs. Additionally, Task Haystack inherits the controllability aspect
-            of NIAH, providing model developers with tools and visualizations to identify
-            model vulnerabilities effectively.
+            Task Haystack draws inspiration from the widely-adopted “needle-in-a-haystack” (NIAH) 
+            evaluation, but presents distinct new challenges. It requires models (1) to utilize the 
+            contexts at a deeper level, rather than resorting to simple copying and pasting; (2) to 
+            navigate through long streams of evolving topics and tasks, proxying the complexities and 
+            dynamism of contexts in real-world scenarios. Additionally, Task Haystack inherits the 
+            controllability of NIAH, providing model developers with tools and visualizations to 
+            identify model vulnerabilities effectively.
           </p>
           <p>
-            We benchmark 12 long-context LMs using Task Haystack. We find that <b>state-of-the-art closed models such as GPT-4o still struggle in this setting, failing 15% of
-            the cases on average, while all open-weight models we evaluate further lack behind by a
-            large margin</b>, failing up to 61% of the cases. In our controlled analysis, we identify factors such as <b>distraction</b>
-            and <b>recency bias</b> as contributors to these failure cases. Further, we observe <b>declines
-            in performance when task instructions are paraphrased at test time or when ICL
-            demonstrations are repeated excessively</b>, raising concerns about the robustness,
-            instruction understanding, and true context utilization of current long-context LMs.
+            We benchmark 14 long-context LMs using Task Haystack, finding that <b>frontier models 
+            like GPT-4o still struggle with the setting, failing on 15% of cases on average. 
+            Most open-weight models further lack behind by a large margin</b>, with failure rates 
+            reaching up to 61%. In our controlled analysis, we identify factors such as <b>distraction</b> 
+            and <b>recency bias</b> as contributors to these failure cases. Further, <b>performance declines 
+            when task instructions are paraphrased at test time or when ICL demonstrations are 
+            repeated excessively</b>, raising concerns about the robust- ness, instruction understanding, 
+            and true context utilization of long-context LMs. We release our code and data to encourage 
+            future research that investigates and addresses these limitations.
           </p>
         </div>
       </div>
@@ -190,12 +191,11 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              We evaluate 10 open-weight models and 2 closed models. 
+              We evaluate 11 open-weight models and 3 closed models. 
               We visualize Lifelong ICL accuracy and pass rate as a function of single-task ICL accuracy.
               State-of-the-art closed models (GPT-4o) still struggle in this setting, and all open models we evaluate further lack behind by a large margin.
             </p>
           </div>
-
 
           <!-- Main Results Table -->
           <details>
@@ -326,6 +326,22 @@
                     <td>51.2</td>
                   </tr>
                   <tr>
+                    <td style="text-align: left;">Llama3.1-70B (128k)</td>
+                    <td>58.8</td>
+                    <td>81.7</td>
+                    <td>81.2</td>
+                    <td>80.0</td>
+                    <td>82.8</td>
+                    <td>81.1</td>
+                    <td>76.2</td>
+                    <td>84.6</td>
+                    <td>82.4</td>
+                    <td>83.8</td>
+                    <td>85.2</td>
+                    <td>83.3</td>
+                    <td>80.0</td>
+                  </tr>
+                  <tr>
                     <td style="text-align: left;">Yi-6B (200k)</td>
                     <td>51.3</td>
                     <td>70.1</td>
@@ -420,6 +436,22 @@
                     <td>87.5</td>
                     <td>89.1</td>
                     <td>88.8</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Gemini-1.5-Flash (1048k)</td>
+                    <td>63.7</td>
+                    <td>78.0</td>
+                    <td>79.1</td>
+                    <td>87.5</td>
+                    <td>77.9</td>
+                    <td>79.4</td>
+                    <td>87.5</td>
+                    <td>79.4</td>
+                    <td>80.4</td>
+                    <td>85.0</td>
+                    <td>77.9</td>
+                    <td>81.6</td>
+                    <td>80.0</td>
                   </tr>
                 </tbody>
               </table>
